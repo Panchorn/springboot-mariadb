@@ -1,0 +1,21 @@
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: p@ssw0rd
+      MYSQL_DATABASE: local_db
+      MYSQL_USER: local_user
+      MYSQL_PASSWORD: p@ssw0rd
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+      MYSQL_SKIP_GRANT_TABLES: yes
+    volumes:
+      - ./mariadb:/var/lib/mariadb
+    networks:
+      - mariadb
+
+networks:
+  mariadb:
+    driver: bridge
